@@ -6,6 +6,8 @@ import com.lys.ddshop.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * User: Administrator
  * Date: 2017/11/6
@@ -21,5 +23,16 @@ public class ItemServiceImpl implements ItemService {
     public TbItem getById(Long itemId) {
         TbItem tbItem= itemDao.selectByPrimaryKey(itemId);
         return tbItem;
+    }
+
+    @Override
+    public List<TbItem> listItems() {
+        List<TbItem> list = null;
+        try {
+            list = itemDao.selectByExample(null);
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
     }
 }

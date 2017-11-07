@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+
 /**
  * User: Administrator
  * Date: 2017/11/6
@@ -27,6 +29,18 @@ public class ItemAction {
     public TbItem getById(@PathVariable("itemId") Long itemId){
         System.out.println(itemId);
         return itemService.getById(itemId);
+    }
+
+    @ResponseBody
+    @RequestMapping("/items")
+    public List<TbItem> listItems(){
+        List<TbItem> list = null;
+        try {
+            list = itemService.listItems();
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
     }
 
 
