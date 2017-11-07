@@ -135,7 +135,6 @@
                 <artifactId>jackson-databind</artifactId>
                 <version>${jackson.version}</version>
             </dependency>
-            <!-- ueditor使用 -->
             <dependency>
                 <groupId>org.json</groupId>
                 <artifactId>json</artifactId>
