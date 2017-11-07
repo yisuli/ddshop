@@ -1,8 +1,8 @@
 package com.lys.ddshop.service;
 
 import com.dhc.ddshop.pojo.po.TbItem;
-
-import java.util.List;
+import com.lys.ddshop.common.dto.Page;
+import com.lys.ddshop.common.dto.Result;
 
 /**
  * User: Administrator
@@ -12,5 +12,7 @@ import java.util.List;
  */
 public interface ItemService {
     TbItem getById(Long itemId);
-    List<TbItem> listItems();
+    //List<TbItem> listItems();
+
+    Result<TbItem> listItemsByPage(Page page);
 }
