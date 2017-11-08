@@ -1,6 +1,6 @@
 package com.dhc.ddshop.dao;
 
-import com.dhc.ddshop.pojo.po.TbItem;
+import com.dhc.ddshop.pojo.vo.TbItemCustom;
 import com.lys.ddshop.common.dto.Page;
 
 import java.util.List;
@@ -13,5 +13,5 @@ import java.util.List;
  */
 public interface TbItemCustomMapper {
     int countItems();
-    List<TbItem> listItemsByPage(Page page);
+    List<TbItemCustom> listItemsByPage(Page page);
 }

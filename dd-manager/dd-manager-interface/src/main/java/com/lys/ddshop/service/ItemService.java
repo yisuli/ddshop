@@ -1,6 +1,7 @@
 package com.lys.ddshop.service;
 
 import com.dhc.ddshop.pojo.po.TbItem;
+import com.dhc.ddshop.pojo.vo.TbItemCustom;
 import com.lys.ddshop.common.dto.Page;
 import com.lys.ddshop.common.dto.Result;
 
@@ -14,5 +15,5 @@ public interface ItemService {
     TbItem getById(Long itemId);
     //List<TbItem> listItems();
 
-    Result<TbItem> listItemsByPage(Page page);
+    Result<TbItemCustom> listItemsByPage(Page page);
 }

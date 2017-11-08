@@ -4,6 +4,7 @@ package com.lys.ddshop.service.impl;
 import com.dhc.ddshop.dao.TbItemCustomMapper;
 import com.dhc.ddshop.dao.TbItemMapper;
 import com.dhc.ddshop.pojo.po.TbItem;
+import com.dhc.ddshop.pojo.vo.TbItemCustom;
 import com.lys.ddshop.common.dto.Page;
 import com.lys.ddshop.common.dto.Result;
 import com.lys.ddshop.service.ItemService;
@@ -43,15 +44,15 @@ public class ItemServiceImpl implements ItemService {
     }*/
 
     @Override
-    public Result<TbItem> listItemsByPage(Page page) {
-       Result<TbItem> result = null;
+    public Result<TbItemCustom> listItemsByPage(Page page) {
+       Result<TbItemCustom> result = null;
         try {
-            result=new Result<TbItem>();
+            result=new Result<TbItemCustom>();
 
             int total=itemCustomDao.countItems();
             result.setTotal(total);
 
-           List<TbItem> list = itemCustomDao.listItemsByPage(page);
+           List<TbItemCustom> list= itemCustomDao.listItemsByPage(page);
             result.setRows(list);
         }catch (Exception e) {
             e.printStackTrace();

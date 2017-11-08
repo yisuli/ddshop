@@ -1,6 +1,7 @@
 package com.lys.ddshop.web;
 
 import com.dhc.ddshop.pojo.po.TbItem;
+import com.dhc.ddshop.pojo.vo.TbItemCustom;
 import com.lys.ddshop.common.dto.Page;
 import com.lys.ddshop.common.dto.Result;
 import com.lys.ddshop.service.ItemService;
@@ -44,8 +45,8 @@ public class ItemAction {
     }*/
   @ResponseBody
   @RequestMapping("/items")
-public Result<TbItem> listItemsByPage(Page page){
-    Result<TbItem> list = null;
+public Result<TbItemCustom> listItemsByPage(Page page){
+    Result<TbItemCustom> list = null;
     try {
         list = itemService.listItemsByPage(page);
     }catch (Exception e) {
