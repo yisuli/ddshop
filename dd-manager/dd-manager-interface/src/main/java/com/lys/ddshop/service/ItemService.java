@@ -5,6 +5,8 @@ import com.dhc.ddshop.pojo.vo.TbItemCustom;
 import com.lys.ddshop.common.dto.Page;
 import com.lys.ddshop.common.dto.Result;
 
+import java.util.List;
+
 /**
  * User: Administrator
  * Date: 2017/11/6
@@ -16,4 +18,10 @@ public interface ItemService {
     //List<TbItem> listItems();
 
     Result<TbItemCustom> listItemsByPage(Page page);
+
+    int updateBatch(List<Long> ids);
+
+    int addBatch(List<Long> ids);
+
+    int deleteBatch(List<Long> ids);
 }

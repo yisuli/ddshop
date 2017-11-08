@@ -9,13 +9,14 @@
   <select id="countItems" resultType="_int">
     select count(1)
     from tb_item
+    where status != 3
   </select>
   <select id="listItemsByPage" parameterType="com.lys.ddshop.common.dto.Page" resultType="com.dhc.ddshop.pojo.vo.TbItemCustom">
     SELECT
     <include refid="Base_Column_List" />
     FROM tb_item i
-    LEFT JOIN tb_item_cat c
-    ON i.cid = c.id
+    LEFT JOIN tb_item_cat c ON i.cid = c.id
+    where i.status != 3
     ORDER BY i.id DESC
     LIMIT #{offset},#{rows}
   </select>

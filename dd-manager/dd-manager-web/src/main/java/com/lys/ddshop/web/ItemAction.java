@@ -8,10 +8,9 @@ import com.lys.ddshop.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * User: Administrator
@@ -56,6 +55,42 @@ public Result<TbItemCustom> listItemsByPage(Page page){
     return list;
 
 }
+@ResponseBody
+@RequestMapping("/items/batch")
+public int updateBatch(@RequestParam("ids[]") List<Long> ids){
+    System.out.println(ids);
+    int i=0;
+    try {
+        i=itemService.updateBatch(ids);
+    }catch (Exception e){
+        e.printStackTrace();
+    }
+    return i;
+}
+    @ResponseBody
+    @RequestMapping("/items/batchup")
+    public int addBatch(@RequestParam("ids[]") List<Long> ids){
+        System.out.println(ids);
+        int i=0;
+        try {
+            i=itemService.addBatch(ids);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return i;
+    }
+    @ResponseBody
+    @RequestMapping("/items/batchdown")
+    public int deleteBatch(@RequestParam("ids[]") List<Long> ids){
+        System.out.println(ids);
+        int i=0;
+        try {
+            i=itemService.deleteBatch(ids);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return i;
+    }
 
 
 }
