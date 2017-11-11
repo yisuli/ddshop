@@ -2,6 +2,8 @@ package com.lys.ddshop.web;
 
 import com.dhc.ddshop.pojo.po.TbItem;
 import com.dhc.ddshop.pojo.vo.TbItemCustom;
+import com.dhc.ddshop.pojo.vo.TbItemQuery;
+import com.lys.ddshop.common.dto.Order;
 import com.lys.ddshop.common.dto.Page;
 import com.lys.ddshop.common.dto.Result;
 import com.lys.ddshop.service.ItemService;
@@ -42,12 +44,14 @@ public class ItemAction {
         }
         return list;
     }*/
+  //分页查询全部，排序
+    //page分页所用，order排序所用
   @ResponseBody
   @RequestMapping("/items")
-public Result<TbItemCustom> listItemsByPage(Page page){
+public Result<TbItemCustom> listItemsByPage(Page page, Order order , TbItemQuery query){
     Result<TbItemCustom> list = null;
     try {
-        list = itemService.listItemsByPage(page);
+        list = itemService.listItemsByPage(page,order,query);
     }catch (Exception e) {
         e.printStackTrace();
     }
@@ -55,6 +59,22 @@ public Result<TbItemCustom> listItemsByPage(Page page){
     return list;
 
 }
+//模糊查询
+//    @ResponseBody
+//    @RequestMapping("/items")aa
+//    public Result<TbItemCustom> listItemsByPage(Page page, Order order){
+//        Result<TbItemCustom> list = null;
+//        try {
+//            list = itemService.listItemsByPage(page,order);
+//        }catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        System.out.println(list);
+//        return list;
+//
+//    }
+
+
 @ResponseBody
 @RequestMapping("/items/batch")
 public int updateBatch(@RequestParam("ids[]") List<Long> ids){

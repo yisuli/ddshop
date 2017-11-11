@@ -6,14 +6,17 @@ import com.dhc.ddshop.dao.TbItemMapper;
 import com.dhc.ddshop.pojo.po.TbItem;
 import com.dhc.ddshop.pojo.po.TbItemExample;
 import com.dhc.ddshop.pojo.vo.TbItemCustom;
+import com.dhc.ddshop.pojo.vo.TbItemQuery;
+import com.lys.ddshop.common.dto.Order;
 import com.lys.ddshop.common.dto.Page;
 import com.lys.ddshop.common.dto.Result;
 import com.lys.ddshop.service.ItemService;
-import jdk.nashorn.internal.runtime.RecompilableScriptFunctionData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * User: Administrator
@@ -46,15 +49,19 @@ public class ItemServiceImpl implements ItemService {
     }*/
 
     @Override
-    public Result<TbItemCustom> listItemsByPage(Page page) {
+    public Result<TbItemCustom> listItemsByPage(Page page, Order order,TbItemQuery query) {
        Result<TbItemCustom> result = null;
         try {
+            Map<String,Object> map=new HashMap<String,Object>();
+            map.put("page",page);
+            map.put("order",order);
+            map.put("query",query);
             result=new Result<TbItemCustom>();
 
-            int total=itemCustomDao.countItems();
+            int total=itemCustomDao.countItems(map);
             result.setTotal(total);
 
-           List<TbItemCustom> list= itemCustomDao.listItemsByPage(page);
+           List<TbItemCustom> list= itemCustomDao.listItemsByPage(map);
             result.setRows(list);
         }catch (Exception e) {
             e.printStackTrace();

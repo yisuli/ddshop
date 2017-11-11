@@ -2,6 +2,7 @@
 var ddshop = {
 
     registerMenuEvent:function(){
+        var _this = this;
         var $tree = $('#menu .easyui-tree');
         $tree.tree({
             onClick:function(node){
@@ -12,19 +13,22 @@ var ddshop = {
                 //     href: href,
                 //     closable:true
                 // });
-                if($('#tab').tabs('exists',text)){
-                    //alert("1");
-                    $('#tab').tabs('select',text)
-                }else{
-                    //alert("2");
-                    $('#tab').tabs('add',{
-                        title: text,
-                        href: href,
-                        closable:true
-                    });
-                }
+                _this.addTabs(text,href);
             }
         });
+    },
+    addTabs:function(text,href){
+        if($('#tab').tabs('exists',text)){
+            $('#tab').tabs('select',text)
+        }else{
+            $('#tab').tabs('add',{
+                title: text,
+                href: href,
+                closable:true
+            });
+        }
+
+
     }
 
 };
