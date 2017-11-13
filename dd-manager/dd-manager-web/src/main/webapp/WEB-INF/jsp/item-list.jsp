@@ -188,10 +188,10 @@
             {field: 'catName', title: '分类名称', width: 100},
             {field: 'price', title: '价格', width: 100},
             {field: 'created', title: '创建时间', width: 100,formatter:function(value,row,index){
-                return moment(value).format('LLL');
+                return moment(value).format('YYYY年MM月DD日,hh:mm:ss');
             }},
             {field: 'updated', title: '修改时间', width: 100,formatter:function(value,row,index){
-                return moment(value).format('LLL');
+                return moment(value).format('YYYY年MM月DD日,hh:mm:ss');
             }}
         ]]
     });

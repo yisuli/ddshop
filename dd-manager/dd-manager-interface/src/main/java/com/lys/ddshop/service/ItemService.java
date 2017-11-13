@@ -26,4 +26,12 @@ public interface ItemService {
     int addBatch(List<Long> ids);
 
     int deleteBatch(List<Long> ids);
+
+    /**
+     *
+     * @param tbItem
+     * @param content
+     * @return
+     */
+    int saveItem(TbItem tbItem, String content);
 }

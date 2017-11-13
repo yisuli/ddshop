@@ -74,9 +74,32 @@
     </form>
 </div>
 <script>
+    function submitForm(){
+        $('#itemAddForm').form('submit', {
+            //提交表单动作的URL地址
+            url: 'item',
+            //在提交之前触发，返回false可以终止提交
+            onSubmit: function(){
+                $('#price').val($('#priceView').val() * 100);
+                return $(this).form('validate');
+            },
+            //在表单提交成功以后触发
+            success:function(data){
+                console.log('success');
+                if(data > 0){
+                    $.messager.alert('消息','保存成功', 'info');
+                    ddshop.addTabs('查询商品', 'item-list');
+                }
+            }
+        });
+    }
+
+    //实例化富文本编辑器
+    var ue = UE.getEditor('container');
+
     $('#cid').combotree({
-        url : 'itemCats?parentId=0',
-        required : true,
+        url: 'itemCats?parentId=0',
+        required: true,
         onBeforeExpand: function (node) {
             //获取当前被点击的tree
             var $currentTree = $('#cid').combotree('tree');
