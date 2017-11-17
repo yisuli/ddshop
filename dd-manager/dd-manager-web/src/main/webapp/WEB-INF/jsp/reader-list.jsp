@@ -2,13 +2,13 @@
          pageEncoding="UTF-8" %>
 <div id="toolbar">
     <div style="padding: 5px; background-color: #fff;">
-        <label>商品标题：</label>
+        <label>读者昵称：</label>
         <input class="easyui-textbox" type="text" id="title">
-        <label>商品状态：</label>
+        <label>读者状态：</label>
         <select id="status" class="easyui-combobox" >
             <option value="0">全部</option>
-            <option value="1">正常</option>
-            <option value="2">下架</option>
+            <option value="1">普通</option>
+            <option value="2">会员</option>
         </select>
         <!--http://www.cnblogs.com/wisdomoon/p/3330856.html-->
         <!--注意：要加上type="button",默认行为是submit-->
@@ -18,8 +18,8 @@
         <button onclick="add()" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">新增</button>
         <button onclick="edit()" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true">编辑</button>
         <button onclick="remove()" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true">删除</button>
-        <button onclick="down()" class="easyui-linkbutton" data-options="iconCls:'icon-down',plain:true">下架</button>
-        <button onclick="up()" class="easyui-linkbutton" data-options="iconCls:'icon-up',plain:true">上架</button>
+        <button onclick="down()" class="easyui-linkbutton" data-options="iconCls:'icon-down',plain:true">休眠</button>
+        <button onclick="up()" class="easyui-linkbutton" data-options="iconCls:'icon-up',plain:true">活跃</button>
     </div>
 </div>
 <table id="dg" ></table>
@@ -36,7 +36,7 @@
         ddshop.addTabs('新增商品','item-add');
     }
     function edit() {
-        
+
     }
     function remove() {
         var selections = $('#dg').datagrid('getSelections');
@@ -150,7 +150,7 @@
         });
     }
     $("#dg").datagrid({
-       url:"items",
+        url:"items",
         multiSort:true,
         toolbar: '#toolbar',
         striped:true,

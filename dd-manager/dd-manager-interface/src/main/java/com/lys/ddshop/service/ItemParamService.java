@@ -1,5 +1,6 @@
 package com.lys.ddshop.service;
 
+import com.dhc.ddshop.pojo.po.TbItemParam;
 import com.dhc.ddshop.pojo.vo.TbItemParamCustom;
 import com.lys.ddshop.common.dto.Page;
 import com.lys.ddshop.common.dto.Result;
@@ -12,4 +13,8 @@ import com.lys.ddshop.common.dto.Result;
  */
 public interface ItemParamService {
     Result<TbItemParamCustom> listItemParamsByPage(Page page);
+
+    TbItemParam getItemParamByCid(Long cid);
+
+    int saveItemParam(Long cid, String paramData);
 }

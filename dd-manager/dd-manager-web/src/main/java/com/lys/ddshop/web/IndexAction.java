@@ -17,7 +17,7 @@ public class IndexAction {
 
     @RequestMapping("/")
     public String index(){
-        return "index";
+        return "index1";
     }
     @RequestMapping("/{page}")
     public String page(@PathVariable("page") String page){

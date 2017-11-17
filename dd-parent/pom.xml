@@ -10,6 +10,7 @@
     <modules>
         <module>../dd-common</module>
         <module>../dd-manager</module>
+        <module>../dd-ftpup</module>
     </modules>
     <!--打包方式，默认为jar-->
     <packaging>pom</packaging>

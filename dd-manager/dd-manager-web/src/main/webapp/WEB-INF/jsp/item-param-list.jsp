@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 
-<div id="toolbar">
+<div id="paramtoolbar">
     <div>
         <button type="button" onclick="addParam()" class="easyui-linkbutton"
                 data-options="iconCls:'icon-add',plain:true">新增
@@ -27,7 +27,7 @@
             rownumbers: true,
             pagination: true,
             pageSize: 10,
-            toolbar: '#toolbar',
+            toolbar: '#paramtoolbar',
             columns: [[
                 {field: 'ck', checkbox: true},
                 {field: 'id', title: 'ID', sortable: true},
@@ -35,7 +35,12 @@
                 {field: 'itemCatName', title: '商品类目'},
                 {
                     field: 'paramData', title: '规格(只显示分组名称)', formatter: function (value, row, index) {
-                    return value;
+                    var obj=JSON.parse(value);
+                    var arr=[];
+                    $.each(obj,function (i,e) {
+                        arr.push(e.group)
+                    })
+                    return arr;
                 }
                 },
                 {
@@ -54,7 +59,7 @@
     });
 
     function addParam() {
-        ttshop.addTab('新增商品规格模板', 'item-param-add');
+        ddshop.addTabs('新增商品规格模板', 'item-param-add');
     }
 
     function editParam() {

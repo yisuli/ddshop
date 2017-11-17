@@ -33,5 +33,5 @@ public interface ItemService {
      * @param content
      * @return
      */
-    int saveItem(TbItem tbItem, String content);
+    int saveItem(TbItem tbItem, String content,String paramData);
 }

@@ -4,9 +4,11 @@ package com.lys.ddshop.service.impl;
 import com.dhc.ddshop.dao.TbItemCustomMapper;
 import com.dhc.ddshop.dao.TbItemDescMapper;
 import com.dhc.ddshop.dao.TbItemMapper;
+import com.dhc.ddshop.dao.TbItemParamItemMapper;
 import com.dhc.ddshop.pojo.po.TbItem;
 import com.dhc.ddshop.pojo.po.TbItemDesc;
 import com.dhc.ddshop.pojo.po.TbItemExample;
+import com.dhc.ddshop.pojo.po.TbItemParamItem;
 import com.dhc.ddshop.pojo.vo.TbItemCustom;
 import com.dhc.ddshop.pojo.vo.TbItemQuery;
 import com.lys.ddshop.common.dto.Order;
@@ -37,6 +39,8 @@ public class ItemServiceImpl implements ItemService {
     private TbItemCustomMapper itemCustomDao;
     @Autowired
     private TbItemDescMapper itemDescDao;
+    @Autowired
+    private TbItemParamItemMapper itemParamItemDao;
 
     @Override
     public TbItem getById(Long itemId) {
@@ -69,6 +73,7 @@ public class ItemServiceImpl implements ItemService {
             result.setTotal(total);
 
             List<TbItemCustom> list = itemCustomDao.listItemsByPage(map);
+            System.out.println(list.get(0).getPriceView());
             result.setRows(list);
         } catch (Exception e) {
             e.printStackTrace();
@@ -126,7 +131,7 @@ public class ItemServiceImpl implements ItemService {
 
     @Transactional
     @Override
-    public int saveItem(TbItem tbItem, String content) {
+    public int saveItem(TbItem tbItem, String content,String paramData) {
         int i = 0;
         try {
             long itemId = IDUtils.getItemId();
@@ -141,6 +146,12 @@ public class ItemServiceImpl implements ItemService {
             desc.setCreated(new Date());
             desc.setUpdated(new Date());
             i += itemDescDao.insert(desc);
+            TbItemParamItem tbItemParamItem=new TbItemParamItem();
+            tbItemParamItem.setItemId(itemId);
+            tbItemParamItem.setParamData(paramData);
+            tbItemParamItem.setCreated(new Date());
+            tbItemParamItem.setUpdated(new Date());
+            i += itemParamItemDao.insert(tbItemParamItem);
         } catch (Exception e) {
             e.printStackTrace();
         }
