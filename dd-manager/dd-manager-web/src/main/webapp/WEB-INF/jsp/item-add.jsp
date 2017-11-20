@@ -127,7 +127,20 @@
 
     UE.delEditor('container');
     //实例化富文本编辑器
-    var ue = UE.getEditor('container');
+    var ue = UE.getEditor('container',{
+        initialFrameWidth:"100%",
+        initialFrameHeight:"300",
+        serverUrl:"file/upload"
+    });
+    //多图上传
+    UE.Editor.prototype._bkGetActionUrl = UE.Editor.prototype.getActionUrl;
+    UE.Editor.prototype.getActionUrl = function(action) {
+        if (action == 'uploadimage') {
+            return 'http://localhost:8080/ddshop/file/upload';
+        }else {
+            return this._bkGetActionUrl.call(this, action);
+        }
+    }
 
     $('#cid').combotree({
         url: 'itemCats?parentId=0',
