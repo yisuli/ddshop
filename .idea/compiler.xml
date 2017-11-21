@@ -14,6 +14,7 @@
         <module name="dd-manager-service" />
         <module name="dd-manager-web" />
         <module name="dd-prota-lweb" />
+        <module name="dd-protal-web" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.7">
@@ -27,6 +28,7 @@
       <module name="dd-manager-web" target="1.7" />
       <module name="dd-parent" target="1.7" />
       <module name="dd-prota-lweb" target="1.7" />
+      <module name="dd-protal-web" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>

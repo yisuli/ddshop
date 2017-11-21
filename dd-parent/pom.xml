@@ -11,7 +11,7 @@
         <module>../dd-common</module>
         <module>../dd-manager</module>
         <module>../dd-ftpup</module>
-        <module>../dd-prota-lweb</module>
+        <module>../dd-protal-web</module>
     </modules>
     <!--打包方式，默认为jar-->
     <packaging>pom</packaging>

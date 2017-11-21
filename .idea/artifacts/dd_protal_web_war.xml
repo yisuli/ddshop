@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="dd-protal-web:war">
+    <output-path>$PROJECT_DIR$/dd-protal-web/target</output-path>
+    <root id="archive" name="dd-protal-web.war">
+      <element id="artifact" artifact-name="dd-protal-web:war exploded" />
+    </root>
+  </artifact>
+</component>
